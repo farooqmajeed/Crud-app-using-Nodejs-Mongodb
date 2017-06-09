@@ -1,2 +1,22 @@
+# dependencies
+/node_modules
+server/node-express/node_modules
+server/client/node_modules
+
+
+# testing
+/coverage
+
+# production
+/build
+/client/build
+
+# misc
+.DS_Store
+.env
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
 
 #node_modules
