@@ -59,13 +59,27 @@ function seedEvents(req, res) {
 //  show Create form
 
 function showCreate(req, res) {
-    res.render('pages/create');
+    res.render('pages/create', {
+        errors: req.flash('errors')
+    });
 }
 
 //  process Create form
 
 
 function processCreate(req, res) {
+    // validator
+    req.checkBody('name', 'Name is required.').notEmpty();
+    req.checkBody('description','Discription is require').notEmpty();
+
+    const errors = req.validationErrors();
+    if(errors) {
+        req.flash('errors', errors.map(err => err.msg));
+        return res.redirect('/events/create');
+    }
+
+
+
     const event = new Event({
         name: req.body.name,
         description: req.body.description
