@@ -9,8 +9,9 @@ require('dotenv').config();
     mongoose       = require('mongoose'),
     session        = require('express-session'),
     cookieParser   = require('cookie-parser'),
-    flash          = require('flash')
-    bodyParser     = require('body-parser');
+    flash          = require('flash'),
+    bodyParser     = require('body-parser'),
+    expressValidator = require('express-validator');
 
 
 //  configure our App
@@ -35,6 +36,7 @@ mongoose.connect(process.env.DB_URI)
 
 // use body parser to grab info from a form
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressValidator());
 
 //  set the Routes
 app.use(require('./app/routes'))
