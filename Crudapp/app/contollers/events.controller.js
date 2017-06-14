@@ -78,8 +78,6 @@ function processCreate(req, res) {
         return res.redirect('/events/create');
     }
 
-
-
     const event = new Event({
         name: req.body.name,
         description: req.body.description
